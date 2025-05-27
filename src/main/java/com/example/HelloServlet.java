@@ -1,13 +1,17 @@
 package com.example;
 
-import javax.servlet.*;
-import javax.servlet.http.*;
+import jakarta.servlet.*;
+import jakarta.servlet.http.*;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 public class HelloServlet extends HttpServlet {
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        req.setAttribute("message", "Welcome to the Java WebApp!");
-        req.getRequestDispatcher("/index.jsp").forward(req, resp);
+        response.setContentType("text/html");
+        PrintWriter out = response.getWriter();
+        out.println("<html><body>");
+        out.println("<h2>Hello from Java 21 WebApp!</h2>");
+        out.println("</body></html>");
     }
 }
